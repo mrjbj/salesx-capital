@@ -1,0 +1,66 @@
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// centers block in middle of parent <div>
+// top left of block is in middle, so need to
+// translate left and up by 50% to put center
+// of block in center of parent
+@mixin CenterBlockInMiddle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERY MANAGER
+/*
+       0 to 600   -> Phone
+     600 to 900   -> Tablet (Portrait)
+     900 to 1200  -> Tablet (Landscape)
+    1200 to 1800  -> Desktop (small - where default styles apply)
+    1800+         -> Desktop (big)
+
+    Since 1200 to 1800 is default, we will write max-width queries for
+    pixel width less than this and min-width media queries for big-desktop
+    above it.
+
+    using em because media queries don't adhere to rem and using px directly
+     would fail to account for larger font size settings per user preferences.
+    1em = 16px (for browser's default font size)
+
+    coding order:
+    1. base + typeography
+    2. general layout (header, footer, grid)
+    3. page layout
+    4. components
+*/
+
+// breakpoint arguments
+//  - phone, tab-portrait, tab-landscape, big-desktop
+@mixin respond($breakpont) {
+  @if $breakpont == phone {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $breakpont == tab-portrait {
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $breakpont == tab-landscape {
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpont == big-desktop {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}

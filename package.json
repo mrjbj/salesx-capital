@@ -1,0 +1,16 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "Landing page for natours css tutorial",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "Jason Jones",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "node-sass": "^4.13.1"
+  }
+}

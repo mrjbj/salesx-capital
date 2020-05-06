@@ -1,0 +1,61 @@
+.story {
+  width: 75%;
+  margin: 0 auto; // block within block center horizontally
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.6); // makes transparent a bit
+  border-radius: 4px;
+  padding: 6rem;
+  padding-left: 9rem; // to accommodate -3rem transform of circle, below
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  // story__shape -> circle image + caption within <figure> element.
+  // 1. both height & width must be specifiec before float will show anything
+  // 2. have to apply skew at descendant level since can only have one transform
+  //    operation applied to element at a time and most specific one will win.
+  // 3. position relative, so descendant <figcaption> can be positioned absolute.
+  &__shape {
+    float: left; // make rest of context float around this element
+    width: 15rem;
+    height: 15rem;
+    shape-outside: circle(50% at 50% 50%); // requires float, height, width
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); // to put some margin between shape and surrounding text
+    position: relative;
+  }
+  &__img {
+    height: 100%;
+    // to center girl in boat within circle
+    // scale a bit bigger to "zoom-in" on image (and then zoom out upon hover)
+    transition: all 0.5s;
+    transform: translateX(-3rem) scale(1.4);
+  }
+  &__text {
+    transform: skewX(12deg);
+  }
+  &__caption {
+    position: absolute;
+    top: 50%; // position 0,0 of block at center of parent
+    left: 50%;
+    // position center of element in center of parent
+    // y-axis is kept at 0% so as to be lower and can be raised and
+    // made visible upon hover
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+  }
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  // make image zoom in then blur and a bit darker
+  &:hover &__img {
+    transform: translateX(-3rem) scale(1);
+    filter: blur(3px) brightness(80%);
+  }
+}

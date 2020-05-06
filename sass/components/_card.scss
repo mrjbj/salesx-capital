@@ -1,0 +1,174 @@
+.card {
+  // perspective helps 'stick' the text to the card and have it move out to you
+  // through the rotation as a single unit. to accomplish, perspective set to big
+  // value and applied to all children involved in transition. Smaller value yeilds
+  // super dramatic effect, too large yeilds no effect, so experiment in browser for
+  // balance.
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative; // parent must be relative when child is absolute.
+  height: 52rem; // position absolute triggers 'clearfix' behavior, so set it manually
+
+  &__side {
+    height: 52rem;
+    transition: all 0.8s ease;
+    position: absolute; // 0,0 is absolute with respect to .card
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 5px;
+    overflow: hidden; // so image in child doesn't overflow the border-radius setting
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+      // starts not rotated (at 0).
+      // upon hover, rotate it 180 degrees, to hide it.
+      background-color: $color-white;
+    }
+    &--back {
+      // background starts already rotated (hidden).
+      // upon hover it gets set to 0 (so as to bring it to front & visible).
+      transform: rotateY(180deg);
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg); // hide it
+  }
+  &:hover &__side--back {
+    transform: rotateY(0deg); // show it
+  }
+  // front side styling
+  &__picture {
+    background-size: cover;
+    background-blend-mode: screen;
+    height: 23rem;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0%, 100% 85%, 0 100%);
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    left: 2rem;
+    width: 80%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone; // so padding applied to each line of wrapped heading
+    box-decoration-break: clone; // so padding applied to each line of wrapped heading (it's 'cloned')
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
+  }
+  &__details {
+    padding: 2rem; // space below first item
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; // center block within block (no top margin, auto left/right)
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+  &__cta {
+    // center block with absolute positioning relative to it's parent
+    // 1. specify element's 0,0 to be at center of parent (via top/left property).
+    // 2. shift element left and up by 50% of it's height/width so that the center of the
+    //    element is now at center of parent.
+    position: absolute;
+    top: 50%; // 1.
+    left: 50%; // 1.
+    transform: translateY(-50%) translateX(-50%); // 2.
+  }
+  &__price-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 100;
+  }
+}

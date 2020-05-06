@@ -1,0 +1,84 @@
+// .row =>  all grid cells contained within row
+// .row.width => row set to max width of 1140px (since 114rem * 10px/rem = 1140px)
+//   - if viewport < max-width, then .row will take up 100% of available view.
+//   - if viewport > max-width, then .row container will be constrained.
+// .row.margin => 0 auto has effect of centering all elements within row
+//    - no top/bottom margin but each element has right/left margin set automatically
+//      with space between so as to center everyting evenly amongst them inside
+// .row:not(:last-child)
+//    - :not pseuso-class is function that represents all elements that do not match
+//      the selector inside.  (So all elements that are not selected by :last-child
+//      pseudo-class will have a gutter).  The last element in .row will not have a
+//      bottom margin.
+// .row.col-1-of-2.width
+//    - calc() is a css function, not a sass function.
+//      calc() executes at run time, so it can perform calculations using mixed units, like rem & px and %
+//      sass executes at compile time, so it can't mix units in page that hasn't been painted yet.
+//      to use sass variable in css function, need to wrap it in #{} syntax.
+//   - there's only one gutter in a 1-of-2 row, so it will be right-margin of first element only.
+//  [class^="col-"]  -> attribute selector.  where element has class attribute that starts with "col-"
+
+@function oneThird($foo) {
+  $result: calc((100% - (2 *#{$gutter-horizontal})) / 3);
+  @return $result;
+}
+
+.row {
+  max-width: $grid-width;
+  //   background-color: #eee;
+  margin: 0 auto;
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+    @include respond(tab-portrait) {
+      margin-bottom: $gutter-vertical-small;
+    }
+  }
+
+  @include respond(tab-portrait) {
+    max-width: 50rem; // portrait can be a little smaller than 100%
+    padding: 0 3rem;
+  }
+
+  @include clearfix;
+
+  [class^='col-'] {
+    float: left;
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+      @include respond(tab-portrait) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+    // if less than 900px shift grid layout to 100% per block
+    @include respond(tab-portrait) {
+      width: 100% !important;
+    }
+  }
+
+  .col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+  .col-1-of-3 {
+    width: calc((100% - (2 *#{$gutter-horizontal})) / 3);
+  }
+  .col-1-of-4 {
+    width: calc((100% - (3 *#{$gutter-horizontal})) / 4);
+  }
+  // column 2
+  .col-2-of-3 {
+    // two one-third columns + one gutter between them
+    width: calc((2 * ((100% - (2 *#{$gutter-horizontal})) / 3)) + #{$gutter-horizontal});
+    // width: calc((2 * oneThird()) + #{$gutter-horizontal});
+  }
+  .col-2-of-4 {
+    // two one-fourth columns + one gutter between them
+    width: calc((2 * ((100% - (3 *#{$gutter-horizontal})) / 4)) + #{$gutter-horizontal});
+  }
+  .col-3-of-4 {
+    // three one-fourth columns + two gutter between them
+    width: calc(
+      (3 * ((100% - (3 *#{$gutter-horizontal})) / 4)) + 2 * #{$gutter-horizontal}
+    );
+  }
+}

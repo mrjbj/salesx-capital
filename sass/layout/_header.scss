@@ -1,0 +1,48 @@
+/*
+ * 95% of viewport height
+ * cover = cover 100% of viewport width
+ * background-position: fix top as aspect ratio changes due to window resize
+ */
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.35),
+      rgba($color-primary-dark, 0.35)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  /* top & left are absolute position but relative to the parent element (e.g. header)
+   * transform applies the translate function relative to the element itself
+   */
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(
+      -50%,
+      -50%
+    ); // so middle of text-box is centered, not left/top edge
+    text-align: center;
+  }
+}

@@ -1,0 +1,210 @@
+// div.navigation
+//    input.navigation__checkbox
+//    label.navigation__button
+//        span.navigation__icon
+//    div.navigation__container
+//        ul.navigation__list
+//            li.navigation__item
+//                a.navigation__link
+// ----------------------------------
+// 1. navigation__checkbox -> <input> whose "checked" or "unchecked" state determines whether
+//    navigation__background covers the whole screen or not.  Also sets whether
+//    navigation__icon is in "x" or "hamburger" configuration.
+//
+// 2. navigation__button -> <label> styled as a white circle just a little bit larger than
+//    navigation__background, so as to cover it when "checked" is unset.
+//
+// 3. navigation__icon -> <span> element styled as either "x" or "hamburger" depending upon whether
+//    "checked" is set.  Hover state causes hamburger buns to spread out a bit for liveliness.
+//
+// 4. navigation__background -> <div> that grows from tiny (covered/hidden) cirle to full screen
+//    size in fixed position according to "checked" state.
+//
+// 5. navigation__container -> <div> to hold navigation__list.  Width is 0 when checked is unset,
+//    100% when checked is set.  Top/right is set to 0, so growth yeilds animation effect that spreads
+//    in from the right.  (Use top/left: 0 to make effect come in from left instead.
+//
+// 6. navigation__list -> <ul>
+.navigation {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+
+  // navigation__checkbox -> hidden <input/> widget, driving different behavior according to state.
+  &__checkbox {
+    display: none;
+  }
+
+  // navigation__button -> grey circle covering minimized background.
+  &__button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    text-align: center;
+    padding-top: 2.5rem;
+    z-index: $z-index-navigation-button;
+    box-shadow: 0 1rem 3rem rgba($color-black, 0.15);
+    cursor: pointer;
+    @include respond(tab-portrait) {
+      top: 3rem;
+      right: 3rem;
+    }
+    @include respond(phone) {
+      top: 2rem;
+      right: 2rem;
+    }
+  }
+
+  // navigation__icon -> the three hamburger lines
+  &__icon {
+    position: relative;
+    margin-top: 0.99rem;
+    &,
+    &::before,
+    &::after {
+      display: inline-block;
+      left: 0.05rem;
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-2;
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      content: ''; // both content & display must be set for pseuso-elements to appear
+      transition: all 0.2s;
+    }
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  // navigation__background -> hidden little green circle or fixed panel covering entire screen
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+    transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+    z-index: $z-index-navigation-background;
+    @include respond(tab-portrait) {
+      top: 3.5rem;
+      right: 3.5rem;
+    }
+    @include respond(phone) {
+      top: 2.5rem;
+      right: 2.5rem;
+    }
+  }
+
+  // navigation__container -> container for the <ul> navigation__list, grows from right to left.
+  &__container {
+    position: fixed; // so even if scroll, stays in place
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: $z-index-navigation-container;
+    // hide the navigation container by setting opacity to 0.
+    // must also set width to 0, so the links hidden within it are not 'clickable'
+    opacity: 0;
+    width: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.15, 0.265, 1.2);
+  }
+
+  // navigation__list -> <ul> is an inline-block, so center it using top/left/translate technique.
+  &__list {
+    @include CenterBlockInMiddle;
+    list-style: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  // navigation__item -> put a little margin around each <li> to space them apart vertically.
+  &__item {
+    margin: 1rem;
+  }
+
+  // navigation__link -> each <a> has behavior to move slashing background image across upon hover.
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 0.5rem 2rem;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      // background-size is super big and has a solid "slashing" linear gradient
+      // as that large background is repositioned, the gradient appears to move,
+      // giving an illusion of the slashing line travelling from left to right.
+      background-size: 230%;
+      span {
+        margin-right: 1.8rem;
+      }
+    }
+    transition: all 0.4s;
+    &:hover,
+    &:active {
+      // :hover triggers the "moving" action via transform of background-position
+      background-position: 100%;
+      transform: translateX(1rem);
+      color: $color-primary;
+    }
+  }
+
+  // NAVIGATION__BUTTON Behaviors
+  // 1. spread the top and bottom hamburger "buns" a bit upon hover
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+  // use :checked pseudo class to toggle navigation__background on or off
+  // use '~' as sibling selector to select navigation__background
+  &__checkbox:checked ~ &__background {
+    transform: scale(80); // 80 times it's original size
+  }
+  &__checkbox:checked ~ &__container {
+    opacity: 1;
+    width: 100%;
+  }
+
+  // when checkbox is checked, select "immediate brother" of navigation__checkbox (via "+"),
+  // then als select it's child (e.g. span.__icon is nephew of input.__checkbox)
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+  // rotating 135 degrees (180 - 45) to give the movement into "x" shape more
+  // space to travel and thus keep the transition going a bit longer.
+  &__checkbox:checked + &__button &__icon::before {
+    transition: all 0.2s;
+    transform: rotate(135deg);
+    top: 0rem;
+  }
+  &__checkbox:checked + &__button &__icon::after {
+    transition: all 0.2s;
+    top: 0rem;
+    transform: rotate(-135deg);
+  }
+}
