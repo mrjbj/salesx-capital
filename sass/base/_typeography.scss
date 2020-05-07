@@ -1,11 +1,23 @@
+// DEFAULTS
 body {
   // font stuff here, since text oriented and can inherit to all downstream elements
   font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  line-height: 1.7;
-  color: $color-grey-dark-1;
+  font-weight: 300;
+  line-height: 1.5;
+  color: $color-text;
 }
 
+b,
+strong {
+  font-weight: 600;
+}
+ol li strong {
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+}
+
+// PROJECT
 .heading-primary {
   color: $color-white;
   text-transform: uppercase;

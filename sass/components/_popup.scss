@@ -30,7 +30,7 @@
   background-color: rgba($color-grey-dark-3, 0.97);
   opacity: 0;
   visibility: hidden;
-  z-index: $z-index-popup-shade;
+  z-index: $z-index-popup-1;
   transition: all 0.3s;
 
   &__content {
@@ -38,7 +38,7 @@
     background-color: $color-white;
     width: 75%;
     box-shadow: 0.5rem 2rem 4rem rgba($color-black, 0.2);
-    z-index: $z-index-popup-content;
+    z-index: $z-index-popup-2;
     border-radius: $border-radius;
     display: table;
     overflow: hidden;

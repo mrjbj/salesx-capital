@@ -58,7 +58,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: $z-index-scaleFlash-button;
+    z-index: $z-index-sub-1;
     transition: all 0.4s;
   }
   &--animated {

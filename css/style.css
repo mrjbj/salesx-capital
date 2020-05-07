@@ -1,0 +1,336 @@
+/*
+       0 to 600   -> Phone
+     600 to 900   -> Tablet (Portrait)
+     900 to 1200  -> Tablet (Landscape)
+    1200 to 1800  -> Desktop (small - where default styles apply)
+    1800+         -> Desktop (big)
+
+    Since 1200 to 1800 is default, we will write max-width queries for
+    pixel width less than this and min-width media queries for big-desktop
+    above it.
+
+    using em because media queries don't adhere to rem and using px directly
+     would fail to account for larger font size settings per user preferences.
+    1em = 16px (for browser's default font size)
+
+    coding order:
+    1. base + typeography
+    2. general layout (header, footer, grid)
+    3. page layout
+    4. components
+*/
+*,
+*::before,
+*::after {
+  border: 0;
+  outline: 0;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  height: 100%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 37.5%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+body {
+  box-sizing: border-box;
+  /* height & width include padding & border (but not margin) */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #ffffff; }
+
+table,
+table td {
+  padding: 0px;
+  border: none;
+  border-collapse: collapse; }
+
+header,
+nav,
+section,
+article,
+aside,
+footer,
+div {
+  display: block; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #474747; }
+
+b,
+strong {
+  font-weight: 600; }
+
+ol li strong {
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* backface-visiblity is a hack that fixes glitchy 'shaking' at end of transformation (hard to see regardless) */
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+  /* display block means element takes up full width with line-feed after it */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: 0.5rem; } }
+
+.heading-secondary {
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  display: inline-block;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  transition: all 0.2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2 rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center !important; }
+
+.u-margin-bottom-large {
+  margin-bottom: 8rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-large {
+      margin-bottom: 5rem !important; } }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 3rem !important; } }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
+
+.u-margin-top-xlarge {
+  margin-top: 10rem !important; }
+
+/*
+    homepage.html
+    contactus.html
+    terms.html
+
+    body.homepage
+      div.wrapper -> contains the entire viewport, including footer
+        header.affix-top  -> header bar, height 100px, fixed at 0/0, background FFFFF when > 1199 or < 320
+            div.container -> contains navigation bar and main but not footer. Height goes to 0 when px > 1199 or < 320
+                div.logo -> anchor tag (for click) with image inside
+                    -> float left, 30x padding if > 1120px
+                    -> else center margin, inline block
+                nav -> display: none when px > 1199 or < 320
+                    ul>li>a.href="contactus"
+                a.mobile_nav_button -> when width between 1199 and 320px
+                    <i> menu_icon -> hamburger
+        section.mobile_navigation  ->  display: none when > 1999 or < 320, else height/width 60px
+        div.main_container -> main section between header and footer, height 100vh - 165px
+            div.content_box1 -> centered but shows nothing
+                p.text_st1 -> shows nothing
+        footer  (min-height: 56px when width < 767px
+            p.copyright
+                copywright text
+                <a> for FieldstreetCapitalManagement <a/>
+                <a> terms of use </a>
+        div.back_to_top
+            <i>
+*/
+.layout__background {
+  background: url(../img/calm-river.jpg) center center no-repeat;
+  height: 100vh;
+  background-size: cover; }
+
+.layout__wrapper {
+  width: 100%;
+  height: calc(100% - 3.5rem);
+  margin: 0;
+  display: table; }
+
+.header {
+  z-index: 100;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 10rem;
+  width: 100%;
+  margin: 0px auto;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+  -webkit-transition: height 0.3s ease 0s, background 0.375s ease-in-out 0s;
+  transition: height 0.3s ease 0s, background 0.375s ease-in-out 0s; }
+  @media (max-width: 1199px) and (min-width: 320px) {
+    .header {
+      background: #ffffff !important;
+      border-bottom: 1px solid #cad4dd;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.09);
+      height: 60px !important; } }
+  .header__container {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    position: relative;
+    padding: 0 7rem; }
+    @media (max-width: 1199px) and (min-width: 320px) {
+      .header__container {
+        padding: 0px 30px; } }
+  .header__logo a {
+    font-weight: 500;
+    color: #1e73be;
+    text-decoration: none;
+    border: 0;
+    transition: all 0.2s linear; }
+  .header__logo--img1 {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    padding-left: 4.75rem;
+    height: 6.5rem;
+    transition: color 0.21s ease-in-out, padding 0.3s ease 0s;
+    background-image: radial-gradient(rgba(139, 103, 103, 0.68), rgba(147, 135, 135, 0.064)); }
+    @media (max-width: 1199px) and (min-width: 320px) {
+      .header__logo--img1 {
+        display: none; } }
+  .header__logo--img2 {
+    display: none; }
+    @media (max-width: 1199px) and (min-width: 320px) {
+      .header__logo--img2 {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); } }
+
+.navigation {
+  position: relative;
+  float: right;
+  display: block; }
+  .navigation__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0px; }
+  .navigation__item {
+    list-style: none;
+    padding: 2rem 0;
+    margin: 0 1rem;
+    display: inline-block;
+    line-height: 6rem;
+    position: relative; }
+    .navigation__item--link {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      line-height: 6rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: color 0.2s; }
+      .navigation__item--link:hover {
+        color: white; }
+
+.mobile-navigation {
+  display: none; }
+  @media (max-width: 1199px) and (min-width: 320px) {
+    .mobile-navigation__button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 60px;
+      border-right: 1px solid #cad4dd; } }
+  @media (max-width: 1199px) and (min-width: 320px) {
+    .mobile-navigation__menu-icon {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      margin: -0.5rem -0.5rem 0 0;
+      width: 16px;
+      height: 16px;
+      background-image: url(../img/sprite-menu.svg);
+      background-repeat: no-repeat;
+      background-position: 0px -32px;
+      opacity: 1;
+      -webkit-transition: -webkit-transform 0.25s ease-out 0s, opacity 0.215s ease-in-out 0s;
+      transition: transform 0.25s ease-out 0s, opacity 0.215s ease-in-out 0s;
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg) scale(1.3); } }
+
+footer {
+  width: 100%;
+  height: 3.5rem;
+  font-size: 1.6rem;
+  padding: 1.6rem;
+  letter-spacing: 1px;
+  background: #f2f2f2;
+  border-top: 1px solid #d8dadc; }
+  footer p {
+    font-weight: 300;
+    font-size: 1.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0;
+    color: #333333; }
+    footer p a {
+      text-decoration: none;
+      color: #333333; }

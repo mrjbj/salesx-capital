@@ -1,25 +1,18 @@
+// Selects all elements, pseudo elements - sets up sensible defaults
 *,
 *::before,
 *::after {
-  /* select all elements, set initial state
-    * box-sizing is not inheritable by default. making it so here
-    * allows better control of this propery in component branches down the line
-    */
+  border: 0;
+  outline: 0;
+  vertical-align: top;
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: inherit; // not inheritable by default. allows for greater control downstream
 }
+
 html {
-  /* root font size is set on html element
-    * we set it to 62.5%, since the default font size is 16px and
-    * .625 * 16px = 10px.  This means user can set their font size to whatever they want
-    * in the browser and our rem measurements will remain proportional to our baseline
-    * design relatinoship that 1rem = 10px. (If it turns out the user raised their
-    * font size to 18 or 20px, then 1 rem would equal 11.25px or 12.5px, respectively.
-    * This would be session specific and no matter to us since it still would keep
-    * everything in proportion to our baseline design reference of 1rem = 10px).
-    */
   font-size: 62.5%; // 1rem = 10px (since 10px/16px = 62.5%)
+  height: 100%;
 
   // ORDER IS IMPORTANT
   // max-width of 1200px -> is device < 1200px?
@@ -30,14 +23,9 @@ html {
   @include respond(tab-portrait) {
     font-size: 50%; // 1rem = 8px (since 8px/16px = .50)
   }
-  // max-width of 600px -> is device < 600px?
-  // question: what if device=500px?  then all 3 rules would apply so
-  // need to have most constraining rule at the bottoms so it "wins".
-  /*
   @include respond(phone) {
     font-size: 37.5%; // 1rem = 8px (since 6px/16px = .37.5)
   }
-  */
   // min-width of 1800px -> is device > 1800px?
   @include respond(big-desktop) {
     font-size: 75%; // 1rem = 12px (since 12px/16px = 75%)
@@ -46,8 +34,27 @@ html {
 
 body {
   box-sizing: border-box; /* height & width include padding & border (but not margin) */
-  padding: 3rem;
-  @include respond(tab-portrait) {
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: $color-background;
+}
+
+// table defaults
+table,
+table td {
+  padding: 0px;
+  border: none;
+  border-collapse: collapse;
+}
+
+// html 5 defaults for older browsers
+header,
+nav,
+section,
+article,
+aside,
+footer,
+div {
+  display: block;
 }

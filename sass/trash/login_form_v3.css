@@ -1,0 +1,235 @@
+input,
+button,
+textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
+form {
+  margin: 0px;
+  padding: 0px;
+}
+
+fieldset {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+.login_form {
+  width: 60%;
+  border: 0px;
+  padding: 0px 0px 0px 0px;
+  color: #ffffff;
+  display: block;
+  margin: 0px auto;
+}
+
+#ctl00_ContentPlaceHolderMain_LoginControl_PanelEmail {
+  margin: 0px auto;
+}
+
+#ctl00_ContentPlaceHolderMain_LoginControl_panLogin h1 {
+  display: none;
+}
+
+.retrieve_password_form {
+  width: 78%;
+  border: 0px;
+  padding: 0px 0px 30px 0px;
+  color: #ffffff !important;
+  position: relative;
+  z-index: 3;
+  margin: 0px auto;
+}
+
+.login_info_block2 p,
+.PanelThankYou p,
+.retrieve_password_form p {
+  color: #ffffff !important;
+  padding-bottom: 20px;
+}
+
+.retrieve_password_form h3 {
+  display: none;
+}
+
+.login_info_block2 p {
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 1024px) {
+  .login_form {
+    width: 90%;
+  }
+  .retrieve_password_form {
+    width: 90%;
+  }
+}
+
+.chbox_holder label {
+  font-weight: normal !important;
+}
+
+.chbox_holder input {
+  margin-left: 5px;
+}
+.request {
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.request label {
+  display: inline-block;
+  text-transform: none;
+  font-size: 16px;
+  font-weight: normal;
+  vertical-align: middle;
+  line-height: 38px;
+}
+
+.request > label {
+  display: none;
+}
+
+.request input[type='password'],
+.request input[type='text'] {
+  height: 40px;
+  border: 1px solid #ffffff;
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  color: #333333;
+  padding-left: 12px;
+  box-sizing: border-box;
+  font-size: 16px;
+  z-index: 2;
+  position: relative;
+}
+
+.request input:focus {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.sticky-placeholder-label {
+  z-index: 1;
+}
+
+#ctl00_ContentPlaceHolderMain_LoginControl_div_RememberMe label {
+  width: auto !important;
+}
+
+#ctl00_ContentPlaceHolderMain_LoginControl_div_RememberMe {
+  padding-bottom: 0px;
+}
+
+.button_holder_lf {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  cursor: pointer;
+  padding-top: 12px;
+  padding-bottom: 10px;
+}
+
+.retrieve_password_form section {
+  width: 100%;
+}
+
+.fp_link {
+  text-decoration: none;
+  color: #ffffff;
+  padding-top: 3px;
+}
+
+.fp_link a {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 767px) {
+  .button_holder_lf {
+    margin-left: 0px;
+    margin-bottom: 10px;
+  }
+  .request {
+    width: 100%;
+  }
+  .fp_link {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .fp_link {
+    width: 100%;
+  }
+}
+
+.back_to_login {
+  padding: 12px 21px 12px 21px;
+  font-size: 16px;
+  display: inline-block;
+  background: #1e73be;
+  width: auto;
+  border: 2px solid transparent;
+  color: #ffffff;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.back_to_login:hover {
+  color: #1e73be;
+  background: #ffffff;
+  border: 2px solid #1e73be;
+}
+
+.chbox_holder {
+  padding-top: 20px;
+}
+
+.chbox_holder,
+.chbox_holder input,
+.chbox_holder label {
+  vertical-align: middle;
+}
+
+.chbox_holder input {
+  margin: 0px 7px 0px 0px;
+}
+
+.login_info_block {
+  display: none;
+}
+
+.login_form ::-webkit-input-placeholder {
+  opacity: 1;
+  color: #5d616b;
+}
+.login_form :-moz-placeholder {
+  opacity: 1;
+  color: #5d616b;
+}
+.login_form ::-moz-placeholder {
+  opacity: 1;
+  color: #5d616b;
+}
+.login_form :-ms-input-placeholder {
+  opacity: 1;
+  color: #5d616b;
+}
+
+.LoginErrorMessage {
+  color: #e16262 !important;
+  font-weight: bold;
+}
+
+#ctl00_ContentPlaceHolderMain_LoginControl_lblLogout {
+  display: block;
+  margin-bottom: 10px;
+}

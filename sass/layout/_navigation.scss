@@ -49,7 +49,7 @@
     right: 6rem;
     text-align: center;
     padding-top: 2.5rem;
-    z-index: $z-index-navigation-button;
+    z-index: $z-index-layout-1;
     box-shadow: 0 1rem 3rem rgba($color-black, 0.15);
     cursor: pointer;
     @include respond(tab-portrait) {
@@ -99,7 +99,7 @@
     right: 6.5rem;
     background-image: radial-gradient($color-primary-light, $color-primary-dark);
     transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
-    z-index: $z-index-navigation-background;
+    z-index: $z-index-layout-2;
     @include respond(tab-portrait) {
       top: 3.5rem;
       right: 3.5rem;
@@ -116,7 +116,7 @@
     top: 0;
     right: 0;
     height: 100%;
-    z-index: $z-index-navigation-container;
+    z-index: $z-index-layout-3;
     // hide the navigation container by setting opacity to 0.
     // must also set width to 0, so the links hidden within it are not 'clickable'
     opacity: 0;

@@ -1,4 +1,41 @@
 // COLORS
+
+$color-text: #474747;
+$color-border: #cad4dd;
+$color-hover: #1e73be;
+$color-background: #ffffff;
+$color-footer-text: #333333;
+$color-footer-background: #f2f2f2;
+$color-footer-border: #d8dadc;
+$color-white: #ffffff;
+$color-logo-background-1: rgba(139, 103, 103, 0.68);
+$color-logo-background-2: rgba(147, 135, 135, 0.064);
+
+//FONT
+$default-font-size: 1.6rem;
+
+// BOX
+$border-radius: 3px;
+
+// Z-INDEX HEIRARCHY
+// modal popup
+$z-index-popup-1: 1000;
+$z-index-popup-2: 1500;
+$z-index-popup-3: 2000;
+// layout level
+$z-index-layout-1: 100;
+$z-index-layout-2: 150;
+$z-index-layout-3: 200;
+// overlapping photo section, hover brings up to front of other photos
+$z-index-element-1: 10;
+$z-index-element-2: 15;
+$z-index-element-3: 20;
+// hidden user controls
+$z-index-sub-1: -10;
+$z-index-sub-2: -15;
+$z-index-sub-3: -20;
+
+// natours
 $color-primary: #55c57a;
 $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
@@ -18,29 +55,8 @@ $color-grey-dark-3: #333;
 $color-white: #fff;
 $color-black: #000;
 
-//FONT
-$default-font-size: 1.6rem;
-
 // GRID
 $grid-width: 114rem; // (114rem * 10px/rem = 1140px)
 $gutter-vertical: 8rem;
 $gutter-vertical-small: 6rem;
 $gutter-horizontal: 6rem;
-
-// BOX
-$border-radius: 3px;
-
-// Z-INDEX HEIRARCHY
-// modal popup
-$z-index-popup-shade: 1000;
-$z-index-popup-content: 2000;
-// navigation menu
-$z-index-navigation-background: 100;
-$z-index-navigation-container: 150;
-$z-index-navigation-button: 200;
-// overlapping photo section, hover brings up to front of other photos
-$z-index-photo-normal: 10;
-$z-index-photo-hover: 20;
-// user controls
-$z-index-background-video: -10;
-$z-index-scaleFlash-button: -10;
