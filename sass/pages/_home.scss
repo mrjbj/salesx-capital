@@ -27,35 +27,59 @@
             <i>
 */
 
-.form {
-  display: block;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.layout__background {
-  display: block;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: url(../img/calm-river.jpg) center center no-repeat;
-  background-size: cover;
-  z-index: $z-index-sub-1;
-}
-
-.layout__wrapper {
+.layout {
+  display: table;
   width: 100%;
   height: calc(100% - 3.5rem);
   margin: 0;
-  display: table;
+  padding: 0;
+
+  &__background {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: url(../img/calm-river.jpg) center center no-repeat;
+    //   background: url(../img/nat-4.jpg) center center no-repeat;
+    //   background: url(../img/nat-6.jpg) center center no-repeat;
+    background-size: cover;
+    z-index: $z-index-sub-1;
+  }
+
+  &__top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60rem;
+    width: 100%;
+    //   background: url(../img/calm-river.jpg) center center no-repeat;
+    //   background: url(../img/nat-4.jpg) center center no-repeat;
+    background: url(../img/nat-6.jpg) left center no-repeat fixed;
+    background-size: cover;
+  }
+  &__bottom {
+    position: absolute;
+    top: 60rem;
+    left: 0;
+    height: calc(100vh - 60rem);
+    display: block;
+    width: 100%;
+
+    &__container {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      position: relative;
+      padding: 0 7rem;
+    }
+  }
 }
 
 .header {
   z-index: $z-index-layout-1;
-  position: fixed;
+  position: relative;
   top: 0px;
   left: 0px;
   height: 10rem;
@@ -173,27 +197,10 @@
       position: relative;
       top: 2.1rem;
       left: 1.9rem;
-      /*
-      position: absolute;
-      top: 50%;
-      right: 50%;
-      margin: -0.5rem -0.5rem 0 0;
-      width: 16px;
-      height: 16px;
-      background-image: url(../img/sprite-menu.svg);
-      background-repeat: no-repeat;
-      background-position: 0px -32px;
-      opacity: 1;
-      -webkit-transition: -webkit-transform 0.25s ease-out 0s,
-        opacity 0.215s ease-in-out 0s;
-      transition: transform 0.25s ease-out 0s, opacity 0.215s ease-in-out 0s;
-      -webkit-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      transform: rotate(0deg) scale(1.3);
-      */
     }
   }
 }
+
 footer {
   display: block;
   height: auto;
@@ -219,4 +226,51 @@ footer {
       color: $color-footer-text;
     }
   }
+}
+// contact_us styles
+.contact {
+  width: 100%;
+  padding: 4rem 0 4.5rem 0;
+  position: relative;
+  display: table;
+
+  &__list {
+    display: table;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    line-height: 3rem;
+    list-style: none;
+    &__item {
+      display: table-cell;
+      font-size: 1.6rem;
+      width: 50%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      p {
+        text-align: justify;
+        padding-bottom: 1rem;
+        line-height: 2.4rem;
+      }
+    }
+  }
+}
+
+.heading-primary {
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 2.5rem;
+  margin-bottom: 2rem;
+  letter-spacing: 3px;
+  color: $color-black;
+}
+
+.u-margin-bottom {
+  margin-bottom: 1rem;
+}
+
+.u-scale-font {
+  font-size: 110%;
 }

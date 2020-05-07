@@ -7,8 +7,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
-    <link rel="stylesheet" href="css/icon-font.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 
@@ -20,46 +18,39 @@
 </head>
 
 <body class="homepage">
-    <div class="layout__background"></div>
-    <form class="form">
-        <div class="form__input">
-            <input type="hidden" name="formstate" id="formstate" value="">
-        </div>
-        <div class="layout__wrapper">
-            <header role="header" class="header">
-                <div class="header__container">
-                    <div class="header__logo"><a href="default.aspx">
-                            <img src="img/salex-logo-grey-small-1x.png" class="header__logo--img1"
-                                title="SalesXCapital">
-                            <img src="img/salex-logo-blue-small-1x.png" class="header__logo--img2"
-                                title="SalesXCapital">
-                        </a></div>
-                    <nav role="navigation" class="navigation">
-                        <ul class="navigation__list">
-                            <li class="navigation__item">
-                                <a class="navigation__item--link" href="contact_us.aspx">Contact Us</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <a class="mobile-navigation__button">
-                        <i class="mobile-navigation__menu-icon"></i>
-                    </a>
-                </div>
-            </header>
-            <section class="mobile-navigation">
-                <ul>
-                    <li><a href="contact_us.aspx">Contact Us</a></li>
-                </ul>
-            </section>
-        </div>
-        <footer>
-            <p class="copyright">
-                © COPYRIGHT 2020 <a href="default.aspx">SaleXCapital Advisors, LLC</a> | <a href="terms.aspx">TERMS
-                    OF USE</a>
-            </p>
-        </footer>
-        <div class="back_to_top"><i></i></div>
-    </form>
+    <div class="layout">
+        <div class="layout__background"></div>
+        <header role="header" class="header">
+            <div class="header__container">
+                <div class="header__logo"><a href="index.html">
+                        <img src="img/salex-logo-grey-small-1x.png" class="header__logo--img1" title="SalesXCapital">
+                        <img src="img/salex-logo-blue-small-1x.png" class="header__logo--img2" title="SalesXCapital">
+                    </a></div>
+                <nav role="navigation" class="navigation">
+                    <ul class="navigation__list">
+                        <li class="navigation__item">
+                            <a class="navigation__item--link" href="contact_us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <a class="mobile-navigation__button">
+                    <i class="mobile-navigation__menu-icon"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mobile-navigation">
+            <ul>
+                <li><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+        </section>
+    </div>
+    <footer>
+        <p class="copyright">
+            © COPYRIGHT 2020 <a href="index.html">SaleXCapital Advisors, LLC</a> | <a href="terms.aspx">TERMS
+                OF USE</a>
+        </p>
+    </footer>
+    <div class="back_to_top"><i></i></div>
 </body>
 
 </html>
