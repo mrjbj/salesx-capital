@@ -192,10 +192,23 @@ ol li strong {
         div.back_to_top
             <i>
 */
+.form {
+  display: block;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0; }
+
 .layout__background {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   background: url(../img/calm-river.jpg) center center no-repeat;
-  height: 100vh;
-  background-size: cover; }
+  background-size: cover;
+  z-index: -10; }
 
 .layout__wrapper {
   width: 100%;
@@ -317,10 +330,14 @@ ol li strong {
       transform: rotate(0deg) scale(1.3); } }
 
 footer {
+  display: block;
+  height: auto;
+  min-height: 5.5rem;
   width: 100%;
-  height: 3.5rem;
-  font-size: 1.6rem;
   padding: 1.6rem;
+  position: absolute;
+  bottom: 0;
+  font-size: 1.1rem;
   letter-spacing: 1px;
   background: #f2f2f2;
   border-top: 1px solid #d8dadc; }
