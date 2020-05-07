@@ -10,6 +10,15 @@ $color-footer-border: #d8dadc;
 $color-white: #ffffff;
 $color-logo-background-1: rgba(139, 103, 103, 0.68);
 $color-logo-background-2: rgba(147, 135, 135, 0.064);
+// Grey colors
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+
+$color-grey-dark-1: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+$color-white: #fff;
+$color-black: #000;
 
 //FONT
 $default-font-size: 1.6rem;
@@ -45,15 +54,6 @@ $color-secondary-dark: #ff7730;
 
 $color-tertiary-light: #2998ff;
 $color-tertiary-dark: #5643fa;
-
-$color-grey-light-1: #f7f7f7;
-$color-grey-light-2: #eee;
-
-$color-grey-dark-1: #777;
-$color-grey-dark-2: #999;
-$color-grey-dark-3: #333;
-$color-white: #fff;
-$color-black: #000;
 
 // GRID
 $grid-width: 114rem; // (114rem * 10px/rem = 1140px)

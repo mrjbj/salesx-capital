@@ -22,6 +22,31 @@
   left: 0%;
   transform: translate(0%, -50%);
 }
+// navigation__icon -> the three hamburger lines
+@mixin Hamburger {
+  position: relative;
+  margin-top: 0.99rem;
+  &,
+  &::before,
+  &::after {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2px;
+    background-color: $color-grey-dark-2;
+  }
+  &::before,
+  &::after {
+    position: absolute;
+    content: ''; // both content & display must be set for pseuso-elements to appear
+    transition: all 0.2s;
+  }
+  &::before {
+    top: -0.8rem;
+  }
+  &::after {
+    top: 0.8rem;
+  }
+}
 
 // MEDIA QUERY MANAGER
 /*
