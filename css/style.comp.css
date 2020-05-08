@@ -32,16 +32,16 @@
 html {
   font-size: 62.5%;
   height: 100%; }
-  @media (max-width: 75em) {
+  @media only screen and (max-width: 75em) {
     html {
       font-size: 56.25%; } }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     html {
       font-size: 50%; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     html {
       font-size: 37.5%; } }
-  @media (min-width: 112.5em) {
+  @media only screen and (min-width: 112.5em) {
     html {
       font-size: 75%; } }
 
@@ -67,6 +67,10 @@ aside,
 footer,
 div {
   display: block; }
+
+::selection {
+  background-color: #4b759afc;
+  color: #fff; }
 
 body {
   font-family: 'Lato', sans-serif;
@@ -98,7 +102,7 @@ ol li strong {
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading-primary--main {
         letter-spacing: 1rem;
         font-size: 5rem; } }
@@ -108,7 +112,7 @@ ol li strong {
     font-weight: 700;
     letter-spacing: 1.75rem;
     animation: moveInRight 1s ease-out; }
-    @media (max-width: 37.5em) {
+    @media only screen and (max-width: 37.5em) {
       .heading-primary--sub {
         letter-spacing: 0.5rem; } }
 
@@ -123,10 +127,10 @@ ol li strong {
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .heading-secondary {
       font-size: 3rem; } }
-  @media (max-width: 37.5em) {
+  @media only screen and (max-width: 37.5em) {
     .heading-secondary {
       font-size: 2.5rem; } }
   .heading-secondary:hover {
@@ -148,13 +152,13 @@ ol li strong {
 
 .u-margin-bottom-large {
   margin-bottom: 8rem !important; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .u-margin-bottom-large {
       margin-bottom: 5rem !important; } }
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem !important; }
-  @media (max-width: 56.25em) {
+  @media only screen and (max-width: 56.25em) {
     .u-margin-bottom-medium {
       margin-bottom: 3rem !important; } }
 
@@ -220,7 +224,7 @@ ol li strong {
   box-shadow: none;
   -webkit-transition: height 0.3s ease 0s, background 0.375s ease-in-out 0s;
   transition: height 0.3s ease 0s, background 0.375s ease-in-out 0s; }
-  @media (max-width: 1199px) and (min-width: 320px) {
+  @media only screen and (max-width: 1199px) and (min-width: 320px) {
     .header {
       background: #f7f7f7 !important;
       border-bottom: 1px solid #cad4dd;
@@ -232,7 +236,7 @@ ol li strong {
     margin: 0px auto;
     position: relative;
     padding: 0 7rem; }
-    @media (max-width: 1199px) and (min-width: 320px) {
+    @media only screen and (max-width: 1199px) and (min-width: 320px) {
       .header__container {
         padding: 0px 30px; } }
   .header__logo a {
@@ -250,12 +254,12 @@ ol li strong {
     padding-left: 4.75rem;
     height: 6.5rem;
     transition: color 0.21s ease-in-out, padding 0.3s ease 0s; }
-    @media (max-width: 1199px) and (min-width: 320px) {
+    @media only screen and (max-width: 1199px) and (min-width: 320px) {
       .header__logo--img1 {
         display: none; } }
   .header__logo--img2 {
     display: none; }
-    @media (max-width: 1199px) and (min-width: 320px) {
+    @media only screen and (max-width: 1199px) and (min-width: 320px) {
       .header__logo--img2 {
         display: block;
         height: 5.5rem;
@@ -294,7 +298,7 @@ ol li strong {
 
 .mobile-navigation {
   display: none; }
-  @media (max-width: 1199px) and (min-width: 320px) {
+  @media only screen and (max-width: 1199px) and (min-width: 320px) {
     .mobile-navigation__button {
       position: absolute;
       top: 0;
@@ -302,7 +306,7 @@ ol li strong {
       width: 60px;
       height: 60px;
       border-right: 1px solid #cad4dd; } }
-  @media (max-width: 1199px) and (min-width: 320px) {
+  @media only screen and (max-width: 1199px) and (min-width: 320px) {
     .mobile-navigation__menu-icon {
       position: relative;
       margin-top: 0.99rem;

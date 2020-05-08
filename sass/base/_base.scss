@@ -58,3 +58,8 @@ footer,
 div {
   display: block;
 }
+
+::selection {
+  background-color: $color-select;
+  color: $color-white;
+}
