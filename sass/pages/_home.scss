@@ -2,29 +2,6 @@
     homepage.html
     contactus.html
     terms.html
-
-    body.homepage
-      div.wrapper -> contains the entire viewport, including footer
-        header.affix-top  -> header bar, height 100px, fixed at 0/0, background FFFFF when > 1199 or < 320
-            div.container -> contains navigation bar and main but not footer. Height goes to 0 when px > 1199 or < 320
-                div.logo -> anchor tag (for click) with image inside
-                    -> float left, 30x padding if > 1120px
-                    -> else center margin, inline block
-                nav -> display: none when px > 1199 or < 320
-                    ul>li>a.href="contactus"
-                a.mobile_nav_button -> when width between 1199 and 320px
-                    <i> menu_icon -> hamburger
-        section.mobile_navigation  ->  display: none when > 1999 or < 320, else height/width 60px
-        div.main_container -> main section between header and footer, height 100vh - 165px
-            div.content_box1 -> centered but shows nothing
-                p.text_st1 -> shows nothing
-        footer  (min-height: 56px when width < 767px
-            p.copyright
-                copywright text
-                <a> for FieldstreetCapitalManagement <a/>
-                <a> terms of use </a>
-        div.back_to_top
-            <i>
 */
 
 .layout {
@@ -124,10 +101,6 @@
       padding-left: 4.75rem;
       height: 6.5rem;
       transition: color 0.21s ease-in-out, padding 0.3s ease 0s;
-      background-image: radial-gradient(
-        $color-logo-background-1,
-        $color-logo-background-2
-      );
       @include respond(double-check) {
         display: none;
       }
@@ -273,4 +246,17 @@ footer {
 
 .u-scale-font {
   font-size: 110%;
+}
+
+.u-gradient-brown {
+  background-image: radial-gradient(
+    $color-logo-background-brown1,
+    $color-logo-background-brown2
+  );
+}
+.u-gradient-blue {
+  background-image: radial-gradient(
+    $color-logo-background-blue1,
+    $color-logo-background-blue2
+  );
 }
